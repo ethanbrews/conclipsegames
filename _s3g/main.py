@@ -73,13 +73,8 @@ def main(args):
         server_callback = server_watchdog_callback
 
     if args['server'] == 'true':
-        try:
-            server_thread, addr = httpserver.start_server(_directories['output'], args['server-ip'], int(args['server-port']), server_callback, _directories['src'])
-            logger.info(f'Started server at {addr[0]}:{str(addr[1])}')
-        except OSError as e:
-            logger.critical(f"Error Starting HTTP Server at {args['server-ip']}:{str(int(args['server-port']))}")
-            logger.critical(e.strerror)
-            return
+        server_thread, addr = httpserver.start_server(_directories['output'], 'localhost', 8000, server_callback, (_directories['src'], _directories['data'], _directories['templates'], _directories['plugins']))
+        logger.info(f'Started server at {addr[0]}:{str(addr[1])}')
 
         try:
             while server_thread.is_alive():

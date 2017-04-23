@@ -4,17 +4,19 @@
         %material.fonts.slab%
         <link type="text/css" href="%page.root%/css/greaterdruidry.css" rel="stylesheet"/>
         <style>
-
+            .col .btn, .btn-large {
+                width:100%;
+                margin-top:5px;
+            }
         </style>
     </head>
     <body>
         <section type="navbar" title="Greater Druidry"></section>
         <div class="container slab">
-            <p class="flow-text">Greater Druidry is an addon to the <a href="TODO: Add link to roots mod">Roots</a> mod. It adds new blocks and items following the theme of the original mod.</p>
+            <p class="flow-text">Greater Druidry is a 1.10 <a href="http://minecraft.net">Minecraft</a> mod and addon to the <a href="https://minecraft.curseforge.com/projects/roots">Roots</a> mod. It adds new blocks and items following the theme of the original mod.</p>
             <div class="row">
                 <for item in greaterdruidry.items>
-                    <!--<div class="col s12 m6 l3" style="background-image: url('%item%');"></div>-->
-                    <div class="col s12 m6 l3">
+                    <div class="col s6 m3 l3">
                         <div class="card">
                             <div class="card-image">
 
@@ -30,9 +32,16 @@
                     %greaterdruidry.items.0.desc%
                 </div>
             </div>
+            <div class="row roboto">
+                <div class="col s12 m4 l4"><a class="btn-large accent-4 waves-effect waves-light" href="https://minecraft.curseforge.com/projects/greater-druidry/files/latest">Download</a></div>
+                <div class="col s12 m4 l4"><a class="btn-large orange accent-4 waves-effect waves-light" href="https://minecraft.curseforge.com/projects/greater-druidry">Curse</a></div>
+                <div class="col s12 m4 l4"><a class="btn-large blue-grey accent-4 waves-effect waves-light" href="https://github.com/JSJBDEV/GreaterDruidry">GitHub</a></div>
+            </div>
             <div class="video-container">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/GWT6K9H9fx8" frameborder="0" allowfullscreen></iframe>
             </div>
+            <br/>
+            <br/>
         </div>
         %material.end%
         %material.js.nav%

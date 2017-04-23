@@ -8,7 +8,7 @@
             <div class="nav-content">
                 <ul class="tabs tabs-transparent">
                     <li class="tab"><a class="active" href="#main_about">About</a></li>
-                    <li class="tab"><a href="#main_download">Download</a></li>
+                    <!--<li class="tab"><a href="#main_download">Download</a></li>-->
                     <li class="tab"><a href="#main_usage">Usage</a></li>
                     <li class="tab"><a href="#main_plugins">Plugins</a></li>
                 </ul>
@@ -20,9 +20,9 @@
                 %sections.s3g.about%
             </div>
         </div>
-        <div id="main_download" class="col s12">
-
-        </div>
+        <!--<div id="main_download" class="col s12">
+%sections.s3g.download%
+</div>-->
         <div id="main_usage" class="col s12">
             <br/>
             <div class="container">
@@ -65,13 +65,27 @@
             </div>
         </div>
 
+        <!--  Download Button -->
+
+        <div class="fixed-action-btn toolbar">
+            <a class="btn-floating btn-large amber accent-4">
+                <i class="large material-icons">file_download</i>
+            </a>
+            <ul>
+                <li class="waves-effect waves-light"><a href="https://github.com/inky2013/s3g"><i class="material-icons hide-on-med-and-up">code</i><span class="hide-on-small-only">GitHub</span></a></li>
+                <li class="waves-effect waves-light"><a href="https://github.com/inky2013/s3g/archive/master.zip"><i class="material-icons hide-on-med-and-up">file_download</i><span class="hide-on-small-only">Download</span></a></li>
+            </ul>
+        </div>
+
+        <!-- /Download Button -->
+
         %material.end%
         %material.js.nav%
         %material.js.scrollspy%
         <script>
-        $(document).ready(function() {
-            $('#usage_sections').pushpin({top: 125});
-        });
+            $(document).ready(function() {
+                $('#usage_sections').pushpin({top: 125});
+            });
         </script>
     </body>
 </html>
