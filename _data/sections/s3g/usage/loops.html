@@ -1,0 +1,56 @@
+<p class="flow-text">For loops can loop over each variable in an array (stored in _data) or over a range of numbers. An example is shown below.</p>
+                <p class="slab">pages.json</p>
+                <blockquote><pre>
+{
+    "pages": [
+        {"title": "Example Page"},
+        {"title": "Second Example"},
+        {"title": "Another Page"}
+    ]
+}
+                        </pre></blockquote>
+                <p class="slab">Input</p>
+                <blockquote><pre>
+&lt;ul&gt;
+    &lt;for item in pages.pages&gt;
+        &lt;li&gt;%item.title%&lt;/li&gt;
+    &lt;/for&gt;
+&lt;/ul&gt;
+                        </pre></blockquote>
+                <p class="slab">Output</p>
+                <blockquote><pre>
+&lt;ul&gt;
+    &lt;li&gt;Example Page&lt;/li&gt;
+    &lt;li&gt;Second Example&lt;/li&gt;
+    &lt;li&gt;Another Page&lt;/li&gt;
+&lt;/ul&gt;
+                        </pre></blockquote>
+
+                <p class="flow-text">For loops can also loop over a range of numbers.</p>
+                <p class="slab">Input</p>
+                <blockquote><pre>
+&lt;for i from 1 to 5&gt;
+    &lt;p&gt;%i%&lt;/p&gt;
+&lt;/for&gt;
+                        </pre></blockquote>
+                <p class="slab">Output</p>
+                <blockquote><pre>
+&lt;p&gt;1&lt;/p&gt;
+&lt;p&gt;2&lt;/p&gt;
+&lt;p&gt;3&lt;/p&gt;
+&lt;p&gt;4&lt;/p&gt;
+&lt;p&gt;5&lt;/p&gt;</pre></blockquote>
+                <p class="flow-text">The step can also be changed as shown in the example below.</p>
+                <p class="slab">Input</p>
+                <blockquote><pre>
+&lt;for i from 5 to 25 step 5&gt;
+    &lt;p&gt;%i%&lt;/p&gt;
+&lt;/for&gt;
+                        </pre></blockquote>
+                <p class="slab">Output</p>
+                <blockquote><pre>
+&lt;p&gt;5&lt;/p&gt;
+&lt;p&gt;10&lt;/p&gt;
+&lt;p&gt;15&lt;/p&gt;
+&lt;p&gt;20&lt;/p&gt;
+&lt;p&gt;25&lt;/p&gt;</pre></blockquote>

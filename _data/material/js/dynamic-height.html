@@ -1,0 +1,13 @@
+<script>
+    function auto_resize() {
+        $('.square').each(function() {
+            $(this).css('height', $(this).width()+'px'); 
+        });
+    }
+    $(document).ready(function() {
+        auto_resize();
+    });
+    $(window).resize(function() {
+        auto_resize();
+    });
+</script>

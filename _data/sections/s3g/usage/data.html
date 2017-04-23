@@ -1,0 +1,50 @@
+<p class="flow-text">Data files are stored in the <code>_data</code> folder and by default only <code>.json</code> files are supported. If <code>.html</code>, <code>.css</code> or <code>.js</code> files are found, the contents of those files will also be read. Variables are accessed by placing the name of the variable in %percent% symbols. An example is shown below.</p>
+<p class="slab">File Structure</p>
+<blockquote><pre>
+|--_data/
+|  |--site.json
+|  |--fonts/
+|  |  |--slab.html
+|
+|--src/
+|  |--index.html
+                        </pre></blockquote>
+<p class="slab">site.json</p>
+<blockquote><pre><code class="language-json">{
+    "homepage": {
+        "title": "Page Title"
+    }
+}
+</code></pre></blockquote>
+<p class="slab">slab.html</p>
+<blockquote><pre class="bordered">
+&lt;link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'&gt;
+&lt;style&gt;.slab {font-family: 'Roboto Slab', serif;}&lt;/style&gt;
+                        </pre></blockquote>
+<p class="slab">index.html</p>
+<blockquote><pre>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;%site.homepage.title%&lt;/title&gt;
+        <span class="blue-text">%fonts.slab%</span>
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1 class="slab"&gt;<span class="red-text">%site.homepage.title%</span>&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre></blockquote>
+<p class="slab">Output</p>
+<blockquote><pre>
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Page Title&lt;/title&gt;
+        <span class="blue-text">
+        &lt;link href='https://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet'&gt;
+        &lt;style&gt;.slab {font-family: 'Roboto Slab', serif;}&lt;/style&gt;
+        </span>
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1 class="slab"&gt;<span class="red-text">Page Title</span>&lt;/h1&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre></blockquote>

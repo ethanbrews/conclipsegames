@@ -1,0 +1,38 @@
+<p class="flow-text">Templates are placed in the <code>_templates</code> folder and can be any type of file. Arguements can be passed to them as well as the main content. As seen in the example. Default values can be set at the top of the template incase a value is not set.</p>
+<p class="slab">_templates/navbar.html</p>
+<blockquote><pre>
+&lt;defaults&gt;
+    &lt;color&gt;#00bcd4&lt;/color&gt;
+&lt;/defaults&gt;
+&lt;nav style="background-color: %color%"&gt;
+    &lt;ul&gt;
+        %content%
+    &lt;/ul&gt;
+&lt;/nav&gt;
+                        </pre></blockquote>
+<p class="slab">src/index.html</p>
+<blockquote><pre>
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;section type="navbar" color="#2196f3"&gt;
+            &lt;li&gt;&lt;a href="page1.html&gt;Page 1&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="page2.html&gt;Page 2&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="page3.html&gt;Page 3&lt;/a&gt;&lt;/li&gt;
+        &lt;/section&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre></blockquote>
+<p class="slab">Output</p>
+<blockquote><pre>
+&lt;html&gt;
+    &lt;body&gt;
+        &lt;nav style="background-color: #2196f3"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="page1.html&gt;Page 1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="page2.html&gt;Page 2&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="page3.html&gt;Page 3&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+                        </pre></blockquote>

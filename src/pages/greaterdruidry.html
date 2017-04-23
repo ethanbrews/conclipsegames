@@ -1,0 +1,49 @@
+<html>
+    <head>
+        %material.header%
+        %material.fonts.slab%
+        <link type="text/css" href="%page.root%/css/greaterdruidry.css" rel="stylesheet"/>
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <section type="navbar" title="Greater Druidry"></section>
+        <div class="container slab">
+            <p class="flow-text">Greater Druidry is an addon to the <a href="TODO: Add link to roots mod">Roots</a> mod. It adds new blocks and items following the theme of the original mod.</p>
+            <div class="row">
+                <for item in greaterdruidry.items>
+                    <!--<div class="col s12 m6 l3" style="background-image: url('%item%');"></div>-->
+                    <div class="col s12 m6 l3">
+                        <div class="card">
+                            <div class="card-image">
+
+                                <img src="%item.img%">
+                                <div class="covering %item.loadclass%" data-desc="%item.desc%" data-index="%item.named-index%"><a class="btn-flat roboto absolute-center white-text nohover">%item.name%</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </for>
+            </div>
+            <div class="flow-text justified">
+                <div class="bubble first">
+                    %greaterdruidry.items.0.desc%
+                </div>
+            </div>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/GWT6K9H9fx8" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+        %material.end%
+        %material.js.nav%
+        %material.js.dynamic-height%
+        <script>
+            $('.covering').click(function() {
+                $('.covering').removeClass('active');
+                $(this).addClass('active');
+                $('.bubble')[0].className = 'bubble '+$(this).attr('data-index');
+                $('.bubble').html($(this).attr('data-desc'));
+            });
+        </script>
+    </body>
+</html>

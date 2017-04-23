@@ -1,0 +1,21 @@
+{
+    "title": "Conclipse Games",
+    "nav": {
+        "links": [
+            {"title": "S3G", "url": "%site.links.s3g%"},
+            {"title": "Ballad Ex Deus", "url": "%site.links.s3g%"},
+            {"title": "Greater Druidry", "url": "%site.links.greaterdruidry%"},
+            {"title": "CG Utils", "url": "%site.links.cgutils%"}
+        ],
+        "list": "%_navlist%"
+    },
+    "links": {
+        "s3g": "%page.root%/pages/s3g.html",
+        "bxd": "%page.root%/pages/bxd.html",
+        "greaterdruidry": "%page.root%/pages/greaterdruidry.html",
+        "cgutils": "%page.root%/pages/cgutils.html",
+        "github": {
+            "s3g": "http://github.com/inky2013/s3g"
+        }
+    }
+}

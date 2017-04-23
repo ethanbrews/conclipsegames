@@ -1,0 +1,20 @@
+{
+    "s3g": {
+        "cover": "https://inky2013.github.io/assets/s3g1.png"
+    },
+    "cgutils": {
+        "cover": "https://inky2013.github.io/assets/cgutils1.png"
+    },
+    "bxd": {
+        "cover": "https://inky2013.github.io/assets/bxd1.png"
+    },
+    "greaterdruidry": {
+        "cover": "https://media-elerium.cursecdn.com/attachments/191/140/gd2.png",
+        "items": [
+            "https://inky2013.github.io/assets/greaterdruidry/item1.png",
+            "https://inky2013.github.io/assets/greaterdruidry/item2.png",
+            "https://inky2013.github.io/assets/greaterdruidry/item3.png",
+            "https://inky2013.github.io/assets/greaterdruidry/item4.png"
+        ]
+    }
+}

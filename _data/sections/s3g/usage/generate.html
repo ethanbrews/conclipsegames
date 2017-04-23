@@ -1,0 +1,49 @@
+<p class="flow-text">To run the generator, open a command window in the <code>_s3g</code> directory then run <code>python start.py &lt;args&gt;</code> The generator will then generate the site using any plugins provided.</p>
+
+<table class="bordered highlight">
+    <thead>
+        <tr>
+            <th>Argument</th>
+            <th>Default</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>--log-level</td>
+            <td>INFO</td>
+            <td>The log level of the program output.</td>
+        </tr>
+        <tr>
+            <td>--iter-limit</td>
+            <td>60</td>
+            <td>Maximum number of times a plugin can process a page. Stops a page being caught in an infinite loop.</td>
+        </tr>
+        <tr>
+            <td>--working-directory</td>
+            <td>./</td>
+            <td>The working directory of S3G.</td>
+        </tr>
+        <tr>
+            <td>--server</td>
+            <td>true</td>
+            <td>Should the built in server should be started</td>
+        </tr>
+        <tr>
+            <td>--server-ip</td>
+            <td>localhost</td>
+            <td>The IP of the built in server</td>
+        </tr>
+        <tr>
+            <td>--server-port</td>
+            <td>8000</td>
+            <td>The port of the built in server</td>
+        </tr>
+        <tr>
+            <td>--server-refresh</td>
+            <td>true</td>
+            <td>Should the site regenerate when a change is detected in the src folder.</td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+<defaults>
+    <jsincludes></jsincludes>
+    <style></style>
+    <js></js>
+</defaults>
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="%material.icons%" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="%material.css%"  media="screen,projection"/>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        %style%
+    </head>
+
+    <body>
+        %content%
+        <input id="_page_href_input" value="<script>window.location.href</script>" />
+        <div id="_window_href_modal" class="modal">
+            <div class="modal-content">
+
+
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="_page_href_modal_val" type="text">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Got It</a>
+            </div>
+        </div>
+        <!--Import jQuery before materialize.js-->
+        <script type="text/javascript" src="%material.jquery%"></script>
+        <script type="text/javascript" src="%material.js%"></script>
+        <script>
+            $(document).ready(function() {
+                $('#_page_href_input').hide();
+                $('#_preloader_container').fadeOut('200'); 
+                $(".button-collapse").sideNav();
+                $('.modal').modal(); 
+                $('.tooltipped-list li').addClass('tooltipped');
+                $('.tooltipped').tooltip({delay: 10});
+                $('.scrollspy').scrollSpy();
+
+            });
+            $(".page-link-copy").click(function() {
+                $('#_page_href_input').show();
+                $('#_page_href_input').val(window.location.href);
+                $('#_page_href_modal_val').val(window.location.href);
+                $('#_page_href_input').select();
+                try {
+                    var successful = document.execCommand('copy');
+                    if (successful) {
+                        Materialize.toast('Page URL Copied', 3000);
+                    } else {
+                        alert(window.clipboardData.getData('Text'));
+                        $('#_window_href_modal').modal('open');
+                        $('#_page_href_modal_val').select();
+                    }
+                } catch (err) {
+                    alert(err);
+                    $('#_window_href_modal').modal('open');
+                    $('#_page_href_modal_val').select();
+                }
+                $('#_page_href_input').hide();
+            });
+        </script>
+        %jsincludes%
+        %js%
+    </body>
+</html>

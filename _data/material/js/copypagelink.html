@@ -1,0 +1,48 @@
+<input id="_page_href_input" value="<script>window.location.href</script>" />
+<div id="_window_href_modal" class="modal">
+    <div class="modal-content">
+
+
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="_page_href_modal_val" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Got It</a>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {
+        $('#_page_href_input').hide(); 
+    });
+    $(".page-link-copy").click(function() {
+        $('#_page_href_input').show();
+        $('#_page_href_input').val(window.location.href);
+        $('#_page_href_modal_val').val(window.location.href);
+        $('#_page_href_input').select();
+        try {
+            var successful = document.execCommand('copy');
+            if (successful) {
+                Materialize.toast('Page URL Copied', 3000);
+            } else {
+                alert(window.clipboardData.getData('Text'));
+                $('#_window_href_modal').modal('open');
+                $('#_page_href_modal_val').select();
+            }
+        } catch (err) {
+            alert(err);
+            $('#_window_href_modal').modal('open');
+            $('#_page_href_modal_val').select();
+        }
+        $('#_page_href_input').hide();
+    });
+
+</script>

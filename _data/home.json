@@ -1,0 +1,8 @@
+{
+    "cards": [
+        {"title": "S3G", "img": "%assets.s3g.cover%", "link": "%site.links.s3g%", "desc": "A simple static site generator written in python. It has simple syntax to support loops, sections, templates and variables."},
+        {"title": "CGutils", "img": "%assets.cgutils.cover%", "link": "%site.links.cgutils%", "desc": "A minecraft mod for 1.10+ that adds useful utilities for server admin using commands. Some commands include the update command which allows files to be downloaded to the server by admin and the stacked command which allows multiple commands to be run at once."},
+        {"title": "Ballad Ex Deus", "img": "%assets.bxd.cover%", "link": "%site.links.bxd%", "desc": "Ballad Ex Deus is an RPG game written in python using the pyglet graphics engine. It features many different branching storylines with the ability to replay sections of the game to see how different actions would have resulted in different outcomes."},
+        {"title": "Greater Druidry", "img": "%assets.greaterdruidry.cover%", "link": "%site.links.greaterdruidry%", "desc": "An addon to the minecraft mod: <a href='https://minecraft.curseforge.com/projects/roots'>Roots</a>. It adds new magical blocks and items that extend upon the items already in the roots mod."}
+    ]
+}

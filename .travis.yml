@@ -1,0 +1,5 @@
+language: python
+python:
+  - "3.6"
+script: python _s3g/main.py --server=false --working-directory=./
+after_success: "curl --ftp-create-dirs -T _site -u $FTPUSERNAME:$FTPPASSWORD ftp://conclipsegames.co.uk/public_html"

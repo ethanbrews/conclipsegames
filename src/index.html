@@ -1,0 +1,17 @@
+<html>
+    <head>
+        %material.header%
+    </head>
+    <body>
+        <section type="navbar-fixed" title="Conclipse Games"></section>
+        <div class="row">
+            <for item in home.cards>
+                <div class="col s12 m10 offset-m1 l8 offset-l2">
+                    <section type="fab-card" title="%item.title%" img="%item.img%" href="%item.link%">%item.desc%</section>
+                </div>
+            </for>
+        </div>
+        %material.end%
+        %material.js.nav%
+    </body>
+</html>

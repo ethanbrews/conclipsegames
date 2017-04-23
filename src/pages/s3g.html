@@ -1,0 +1,77 @@
+<html>
+    <head>
+        %material.header%
+        %material.fonts.slab%
+    </head>
+    <body>
+        <section type="nav-extended" title="S3G" list="%_navlist%"> 
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent">
+                    <li class="tab"><a class="active" href="#main_about">About</a></li>
+                    <li class="tab"><a href="#main_download">Download</a></li>
+                    <li class="tab"><a href="#main_usage">Usage</a></li>
+                    <li class="tab"><a href="#main_plugins">Plugins</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <div id="main_about" class="col s12">
+            <div class="container justified">
+                %sections.s3g.about%
+            </div>
+        </div>
+        <div id="main_download" class="col s12">
+
+        </div>
+        <div id="main_usage" class="col s12">
+            <br/>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col s12 m9 l10">
+                        <div id="usage_fs" class="section scrollspy">
+                            %sections.s3g.usage.fs%
+                        </div>
+                        <div id="usage_generate" class="section scrollspy">
+                            %sections.s3g.usage.generate%
+                        </div>    
+                        <div id="usage_data" class="section scrollspy">
+                            %sections.s3g.usage.data%
+                        </div>
+                        <div id="usage_loops" class="section scrollspy">
+                            %sections.s3g.usage.loops%
+                        </div>
+                        <div id="usage_templates" class="section scrollspy">
+                            %sections.s3g.usage.templates%
+                        </div>
+
+                    </div>
+                    <div class="col hide-on-small-only m3 l2">
+                        <ul class="section table-of-contents" id="usage_sections">
+                            <li><a href="#usage_fs">File Structure</a></li>
+                            <li><a href="#usage_generate">Generating your Site</a></li>
+                            <li><a href="#usage_data">Data</a></li>
+                            <li><a href="#usage_loops">For Loops</a></li>
+                            <li><a href="#usage_templates">Templates</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div id="main_plugins" class="col s12">
+            <div class="container">
+                %sections.s3g.plugins%
+            </div>
+        </div>
+
+        %material.end%
+        %material.js.nav%
+        %material.js.scrollspy%
+        <script>
+        $(document).ready(function() {
+            $('#usage_sections').pushpin({top: 125});
+        });
+        </script>
+    </body>
+</html>

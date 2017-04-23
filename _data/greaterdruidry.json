@@ -1,0 +1,8 @@
+{
+    "items": [
+        {"name": "Wyrrd Stone", "img": "%assets.greaterdruidry.items.0%", "named-index": "first", "loadclass": "active", "desc": "These stones attract the energy of nature to give special effects to those standing on them. Effects are set using chalk when crafting the stone which range from speed to regeneration."},
+        {"name": "Nomadic Tablet", "img": "%assets.greaterdruidry.items.1%", "named-index": "second", "loadclass": "", "desc": "The nomadic tablet is an upgraded version of the roots tablet. It allows you to unlock items from greater druidry as well as some new crafting recipes using the stone as a catalyst such as wool to string."},
+        {"name": "Everflame", "img": "%assets.greaterdruidry.items.2%", "named-index": "third", "loadclass": "", "desc": "The everflame is so bright it allows you to see as if it were broad daylight when holding it. It also has the power to focus it's energy into a block to start a fire similar to a flint and steel."},
+        {"name": "Druidic Brews", "img": "%assets.greaterdruidry.items.3%", "named-index": "fourth", "loadclass": "", "desc": "Powerful beverages that can give a much wider range of effects than a simple potion. They are made from druidic plants and may leave you feeling a bit 'tipsy'."}
+    ]
+}

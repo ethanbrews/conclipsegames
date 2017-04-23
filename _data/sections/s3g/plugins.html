@@ -1,0 +1,420 @@
+<p class="flow-text">Plugins are added by placing the <code>.py</code> file into the <code>_plugins</code> folder. The plugin must contain an <code>init</code> function which returns a plugin object or tuple of plugin objects.</p>
+<p class="flow-text">Look at the <a href="https://github.com/inky2013/s3g/tree/master/_s3g/modules">default plugins</a> to better understand how to create your own.</p>
+
+<h4 class="slab">Load Phases</h4>
+<table class="bordered">
+    <thead>
+        <tr>
+            <th>load_phase</th>
+            <th>Name</th>
+            <th>Object Type</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Data Collection</td>
+            <td>PreProcessedData</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Template Collection</td>
+            <td>Section</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Indexing</td>
+            <td>PageData</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Processing Stage 1</td>
+            <td>Page</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Processing Stage 2</td>
+            <td>Page</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>Processing Stage 3</td>
+            <td>Page</td>
+        </tr>
+    </tbody>
+</table>
+<p>There are 3 stages of processing to ensure that plugins do not process parts of a file too early. (Cover information is read in stage 1, templates are set in phase 2 etc...)</p>
+
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header">Plugin Object</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>process</td>
+                        <td>Function accepting 1 argument</td>
+                        <td>This processes the object passed to it as an argument. It then returns the object.</td>
+                    </tr>
+                    <tr>
+                        <td>load_phase</td>
+                        <td>Integer</td>
+                        <td>Which phase the plugin should process data.</td>
+                    </tr>
+                    <tr>
+                        <td>load_position</td>
+                        <td>Integer</td>
+                        <td>The plugins will be sorted by their load_position and then they will be called in that order.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">PreProcessedData Object</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Initial Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Name of the file without the path or extension</td>
+                    </tr>
+                    <tr>
+                        <td>ext</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>File extension</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Contents of the file</td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>Dictionary</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Processed Data</td>
+                    </tr>
+                    <tr>
+                        <td>processed</td>
+                        <td>Boolean</td>
+                        <td>False</td>
+                        <td>Has the object been processed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">Section Object</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Initial Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Name of the section</td>
+                    </tr>
+                    <tr>
+                        <td>variables</td>
+                        <td>Dictionary</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Default values for variables that can be passed to the section</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>The content of the section which will be inserted into the target file</td>
+                    </tr>
+                    <tr>
+                        <td>ext</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>The extension of the file</td>
+                    </tr>
+                    <tr>
+                        <td>path</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>The path to the file</td>
+                    </tr>
+                    <tr>
+                        <td>processed</td>
+                        <td>Boolean</td>
+                        <td>False</td>
+                        <td>Has the object been processed</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">PageData Object</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Initial Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>path</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Path to the file</td>
+                    </tr>
+                    <tr>
+                        <td>ext</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Extension of the file</td>
+                    </tr>
+                    <tr>
+                        <td>processed</td>
+                        <td>Boolean</td>
+                        <td>False</td>
+                        <td>Has the object been processed</td>
+                    </tr>
+                    <tr>
+                        <td>needs_processing</td>
+                        <td>Boolean</td>
+                        <td>False</td>
+                        <td>Should this file be processed or just copied (Eg: an mp4 file would not need processing)</td>
+                    </tr>
+                    <tr>
+                        <td>copy</td>
+                        <td>Boolean</td>
+                        <td>True</td>
+                        <td>Should this file be included in the site at all</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">Page Object</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Initial Value</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>name</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>File name excluding extension</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>File contents</td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>DataManager</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Contains all data from _data and the page cover information.</td>
+                    </tr>
+                    <tr>
+                        <td>path</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Path to the file</td>
+                    </tr>
+                    <tr>
+                        <td>ext</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>File extension</td>
+                    </tr>
+                    <tr>
+                        <td>out_path</td>
+                        <td>String</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Where the page should be saved</td>
+                    </tr>
+                    <tr>
+                        <td>was_processed</td>
+                        <td>Boolean</td>
+                        <td>False</td>
+                        <td>Set to True if a plugin processes the page at all</td>
+                    </tr>
+                    <tr>
+                        <td>needs_processing</td>
+                        <td>Boolean</td>
+                        <td>Inherited from PageData object</td>
+                        <td>Does the page need to be processed</td>
+                    </tr>
+                    <tr>
+                        <td>section_manager</td>
+                        <td>SectionManager</td>
+                        <td class="grey-text">Unknown</td>
+                        <td>Contains all sections avaliable to the page</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </li>
+</ul>
+
+
+<ul class="collapsible" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header">SectionManager</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <th>Method</th>
+                    <th>Arguments</th>
+                    <th>Description</th>
+                    <th>Returns</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>add_section</td>
+                        <td>Section: section</td>
+                        <td>Adds section to the list of avaliable sections</td>
+                        <td class="grey-text">None</td>
+                    </tr>
+                    <tr>
+                        <td>get_section</td>
+                        <td>String: name</td>
+                        <td>Returns the section with the name given.</td>
+                        <td>Section OR <span class="grey-text">None</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header">DataManager</div>
+        <div class="collapsible-body">
+
+            <table class="bordered">
+                <thead>
+                    <th>Method</th>
+                    <th>Arguments</th>
+                    <th>Description</th>
+                    <th>Returns</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>iterate</td>
+                        <td>String: key (*args)</td>
+                        <td>Each argument is a key for data (see example)</td>
+                        <td>Yields each value found at the key</td>
+                    </tr>
+                    <tr>
+                        <td>get</td>
+                        <td>String: key (*args)</td>
+                        <td>Each argument is a key for data (see example)</td>
+                        <td>Returns value found at the key</td>
+                    </tr>
+                    <tr>
+                        <td>update</td>
+                        <td>Dictionary: update</td>
+                        <td>The input dictionary is merged with existing data</td>
+                        <td class="grey-text">None</td>
+                    </tr>
+                    <tr>
+                        <td>add_data</td>
+                        <td>Tuple: keys, Object: data</td>
+                        <td>Sets the value of keys to data</td>
+                        <td class="grey-text">None</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <p>Example data for the <a href="%site.links.greaterdruidry%">Greater Druidry</a> page:</p>
+            
+            <blockquote><pre>
+            data_manager = <span class="grey-text">DataManager containing {"page": {"root": "./", "tags": ["minecraft", "mod", "roots"]}}</span>
+            data_manager.get(<span class="green-text">"page"</span>, <span class="green-text">"root"</span>)  <span class="grey-text"># Returns "./"</span>
+            data_manager.iterate(<span class="green-text">"page"</span>, <span class="green-text">"tags"</span>)  <span class="grey-text"># Yields "minecraft", "mod", "roots"</span>
+            
+            data_manager.add_data((<span class="green-text">"page"</span>, <span class="green-text">"tags"</span>), <span class="green-text">"addon"</span>)  
+            <span class="grey-text"># data_manager now contains {"page": {"root": "./", "tags": ["minecraft", "mod", "roots", "addon"]}}</span>
+            data_manager.update({<span class="green-text">"page"</span>: {<span class="green-text">"root"</span>: <span class="green-text">"../"</span>}}) 
+            <span class="grey-text"># data_manager now contains {"page": {"root": "../", "tags": ["minecraft", "mod", "roots", "addon"]}}</span>
+            </pre></blockquote>
+            
+        </div>
+    </li>
+</ul>
+
+
+<p>Example plugin</p>
+
+<blockquote><pre>
+<span class="orange-text">class</span> MyPlugin:
+    <span class="orange-text">def</span> <span class="purple-text">__init__</span>(<span class="purple-text">self</span>, logger):
+        <span class="purple-text">self</span>.logger = logger
+        <span class="purple-text">self</span>.load_phase = 3      <span class="grey-text"># Indexing Phase</span>
+        <span class="purple-text">self</span>.load_position = 10  <span class="grey-text"># Order the plugins should load</span>
+        <span class="purple-text">self</span>.name = <span class="green-text">"MyPlugin"</span>   <span class="grey-text"># Plugin name used in debugging</span>
+        logger.info(<span class="green-text">f'Loaded Plugin Object "{name}"'</span>)
+
+    <span class="orange-text">def</span> process(<span class="purple-text">self</span>, obj):
+        <span class="orange-text">if</span> obj.ext in [<span class="green-text">".html"</span>, <span class="green-text">".htm"</span>, <span class="green-text">".md"</span>, <span class="green-text">".markdown"</span>]:
+            obj.needs_processing = <span class="orange-text">True</span>  <span class="grey-text"># Marks HTML and markdown files to be processed.</span>
+        <span class="orange-text">return</span> obj
+
+<span class="orange-text">def</span> init(logger):
+    <span class="orange-text">return</span> MyPlugin(logger)
+
+</pre></blockquote>
