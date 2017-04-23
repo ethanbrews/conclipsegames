@@ -1,5 +1,6 @@
 <html>
     <head>
+        %javascript_warning%
         %material.header%
         %material.fonts.slab%
     </head>
@@ -79,9 +80,12 @@
 
         <!-- /Download Button -->
 
+        %analytics%
         %material.end%
         %material.js.nav%
         %material.js.scrollspy%
+        %cookies.base%
+        <section type="tabs_cookies" prefix="s3g_main"></section>
         <script>
             $(document).ready(function() {
                 $('#usage_sections').pushpin({top: 125});

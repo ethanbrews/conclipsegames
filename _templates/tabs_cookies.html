@@ -1,0 +1,19 @@
+<defaults>
+    <prefix></prefix>
+</defaults>
+<script>
+    var _cookies_tabs_prefix = "%prefix%";
+    if (_cookies_tabs_prefix == "") {
+        alert('Missing cookies tabs prefix!');
+    }
+    function on_tab_show(tab_id) {
+        put_in_local_storage('%prefix%_last_tab', tab_id.selector.substr(1));
+    }
+    $(document).ready(function(){
+
+        $('ul.tabs').tabs({onShow:on_tab_show});
+        if (get_from_local_storage('%prefix%_last_tab', undefined) !== undefined) {
+            $('ul.tabs').tabs('select_tab', get_from_local_storage('%prefix%_last_tab', undefined));
+        }
+    });
+</script>

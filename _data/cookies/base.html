@@ -1,0 +1,68 @@
+<div id="_cookies_modal" class="modal">
+    <div class="modal-content">
+        <h4>This site uses cookies</h4>
+        <form action="#">
+            <p>
+                <input checked class="with-gap cookie_accept_radio" name="_cookies_group" type="radio" id="_cookies_accept" />
+                <label for="_cookies_accept">Allow Cookies</label>
+            </p>
+            <p>
+                <input class="with-gap cookie_accept_radio" name="_cookies_group" type="radio" id="_cookies_deny" />
+                <label for="_cookies_deny">Don't Use Cookies</label>
+            </p>
+        </form>
+        <br/>
+        <form>
+            <p>
+                <input type="checkbox" class="filled-in" id="_cookies_never_show" checked="checked" />
+                <label for="_cookies_never_show">Don't ask about cookies again</label>
+            </p>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Done</a>
+    </div>
+</div>
+
+<script>
+    var can_use_local_storage = false;
+    function get_from_local_storage(key, def) {
+        var value = localStorage.getItem(key);
+        if (value === null) {
+            return def;
+        }
+        console.log(value);
+        return value;
+    }
+    function put_in_local_storage(key, val) {
+        if (can_use_local_storage) {
+            localStorage.setItem(key, val)
+        }
+    }
+    function _cookie_modal_dismissed() {
+        if ($('#_cookies_accept').is(':checked')) {
+            can_use_local_storage = true;
+            put_in_local_storage('cookie_permission', true);
+            if ($('#_cookies_never_show').is(':checked')) {
+                put_in_local_storage('warn_cookies', false);
+            }
+        } else {
+            can_use_local_storage = false;
+        }
+    }
+    $('.cookie_accept_radio').click(function() {
+        if ($('#_cookies_deny').is(':checked')) {
+            $('#_cookies_never_show').attr('disabled', 'disabled');
+            $('#_cookies_never_show').prop('checked', false);
+        } else {
+            $('#_cookies_never_show').removeAttr('disabled');
+        }
+    });
+    can_use_local_storage = get_from_local_storage('cookie_permission', false);
+    $(document).ready(function() {
+        if (!(get_from_local_storage('warn_cookies', false))) {
+            $('#_cookies_modal').modal({dismissible: false, complete: _cookie_modal_dismissed}); 
+            $('#_cookies_modal').modal('open'); 
+        }
+    });
+</script>
