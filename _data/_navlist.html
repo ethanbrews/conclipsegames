@@ -1,4 +1,15 @@
+<style>.no-hover:hover {background-color: transparent;}</style>
 <li><a href="%page.root%">Home</a></li>
 <for i in site.nav.links>   
-    <li><a href="%i.url%">%i.title%</a></li>
+    <li><a class="waves-effect waves-amber" href="%i.url%">%i.title%</a></li>
 </for>
+<li class="no-hover"><a>
+<div class="switch">
+    <label>
+      <span style="font-size:14px; color: rgba(0,0,0,0.87);">Enable Cookies </span>
+      <input type="checkbox" onclick="navBarCookieSettingUpdated();" id="navBarCookieSettingsSwitch">
+      <span class="lever"></span>
+      
+    </label>
+  </div></a>
+</li>

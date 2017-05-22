@@ -8,12 +8,13 @@
         <div class="row">
             <for item in home.cards>
                 <div class="col s12 m8 offset-m2 l6 offset-l3">
-                    <section type="fab-card" title="%item.title%" img="%item.img%" href="%item.link%">%item.desc%</section>
+                    <section type="fab-card" title="%item.title%" img="%item.img%" href="%item.link%" extbtncls="%item.btncls%">%item.desc%</section>
                 </div>
             </for>
         </div>
         %analytics%
         %material.end%
         %material.js.nav%
+        %cookies.base%
     </body>
 </html>

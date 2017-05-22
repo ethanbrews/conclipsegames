@@ -1,0 +1,125 @@
+<html>
+    <head>
+        %javascript_warning%
+        %material.header%
+        %material.fonts.slab%
+        <style>
+            .navigation_list_container p {
+                margin-top:0px;
+                margin-bottom:5px;
+                font-weight: 400;
+            }
+        </style>
+    </head>
+    <body>
+        %loader%
+        <section type="navbar" title="CGUtils" list="%_navlist%"> 
+        </section>
+
+        <div class="container">
+            <h2>CGUtils <span class="grey-text" style="font-size: 16px;">Minecraft Mod for 1.10+</span></h2>
+            <p class="flow-text slab">CGUtils is a server-side admin mod which adds useful features for server admin and map makers. These are: </p>
+            <blockquote>
+                <p class="grey-text">Contents</p>
+                <div class="flow-text navigation_list_container">
+                    <p><a href="#sect_downloads">Download CGUtils</a></p>
+                    <p><a href="#sect_config">Config Files</a></p>
+                    <p><a href="#sect_files">File Downloads</a></p>
+                    <p><a href="#sect_stacks">Stacked Commands</a></p>
+                    <p><a href="#sect_sudo">Sudo Command</a></p>
+                </div>
+            </blockquote>
+            <br/><br/><br/>
+            <h4 class="slab" id="sect_downloads">Downloads</h4>
+            <div class="row">
+                <div class="col s12 m6"><a target="_blank" href="https://minecraft.curseforge.com/projects/cg-utils" class="btn-large orange waves-effect waves-light" style="width:100%;margin-top:5px;margin-left:5px;margin-right:5px;">Curse</a></div>
+                <div class="col s12 m6"><a target="_blank" href="https://github.com/inky2013/cgutils" class="btn-large grey waves-effect waves-light" style="width:100%;margin-top:5px;margin-left:5px;margin-right:5px;">Source</a></div>
+            </div>
+            <br/><br/>
+            <h4 class="slab" id="sect_config">Config Files</h4>
+            <p>Config for file downloads and stacked commands are saved as json files. Stacked commands are saved at <code>./config/cgutils/stacks</code> and downloads are saved at <code>./config/cgutils/downloads</code></p>
+            <br/><br/>
+            <h4 class="slab" id="sect_files">File Downloads</h4>
+            <p>File downloads can only be initiated by a server admin. The URL can be specified in config or typed ingame. The JSON format is shown below.</p>
+            <pre><code>{
+ <span class="purple-text">"name</span>":<span class="green-text">"unique_name_with_no_spaces</span>",
+ <span class="purple-text">"saveLocation</span>":<span class="green-text">"save directory relative to server jar</span>",
+ <span class="purple-text">"url</span>":<span class="green-text">"http://example.com/myfile.txt</span>",
+ <span class="purple-text">"group</span>":<span class="green-text">"group_name</span>"
+}</code></pre>
+            <p>There are 3 commands that can be used to download files in CGUtils. These are:</p>
+            <ul>
+                <li>- <strong><code>/update get &lt;unique_name_with_no_spaces&gt;</code></strong>: This downloads the file with the unique name</li>
+                <li>- <strong><code>/update group &lt;group_name&gt;</code></strong>: This downloads all files in the specified group</li>
+                <li>- <strong><code>/update url &lt;url&gt; &lt;location&gt;</code></strong>: Downloads the file found at <strong>url</strong> to <strong>location</strong></li>
+            </ul>
+            <p>Example file download JSON file:</p>
+            <pre><code>{
+ <span class="purple-text">"name</span>":<span class="green-text">"tinkers</span>",
+ <span class="purple-text">"saveLocation</span>":<span class="green-text">"scripts/</span>",
+ <span class="purple-text">"url</span>":<span class="green-text">"http://inky2013.github.io/mt_scripts/tinkers.zs</span>",
+ <span class="purple-text">"group</span>":<span class="green-text">"minetweaker</span>"
+}</code></pre>
+            <p>We could then download "tinkers.zs" using any one of the following commands:</p>
+            <ul>
+                <li>- <strong><code>/update get tinkers</code></strong></li>
+                <li>- <strong><code>/update group minetweaker</code></strong></li>
+                <li>- <strong><code>/update url http://inky2013.github.io/mt_scripts/tinkers.zs scripts/</code></strong></li>
+            </ul>
+
+            <br/><br/>
+            <h4 class="slab" id="sect_stacks">Stacked Commands</h4>
+            <p>Stacked commands are a list of commands that all run in sequence when the command is run. A simple example is shown below which will summon a cow, pig, sheep and chicken at the sender.</p>
+            <pre><code>{
+    <span class="purple-text">"name"</span>:<span class="green-text">"summonfood"</span>,
+    <span class="purple-text">"requiresop"</span>:<span class="orange-text">false</span>,
+    <span class="purple-text">"commands"</span>: [
+        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Cow ~ ~ ~"</span>,
+        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Sheep ~ ~ ~"</span>,
+        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Pig ~ ~ ~"</span>,
+        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Chicken ~ ~ ~"</span>
+    ]
+}</code></pre>
+            
+            <p>Arguments can also be added to the command.</p>
+            
+            <pre><code>{
+    <span class="purple-text">"name"</span>:<span class="green-text">"subtitle"</span>,
+    <span class="purple-text">"requiresop"</span>:<span class="orange-text">true</span>,
+    <span class="purple-text">"commands"</span>: [
+        <span class="green-text">"title {{0}} title {<span class="orange-text">\"</span>text<span class="orange-text">\"</span>:<span class="orange-text">\"</span><span class="orange-text">\"</span>}"</span>,
+        <span class="green-text">"title {{0}} subtitle {<span class="orange-text">\"</span>text<span class="orange-text">\"</span>:<span class="orange-text">\"</span>{{1}}}<span class="orange-text">\"</span>}"</span>
+    ]
+}</code></pre>
+            <p>The command will then be run with <strong><code>/subtitle &lt;player&gt; &lt;text&gt;</code></strong></p>
+            
+            <br/><br/>
+            <h4 class="slab" id="sect_sudo">Sudo Command</h4>
+            <p>The sudo command has 2 main uses:</p>
+            <ul>
+                <li>- To run an admin command from inside a stacked command</li>
+                <li>- To run an admin command from a fake player (eg: open computers)</li>
+            </ul>
+            <p>It has very simple usage: <strong><code>/sudo &lt;command with spaces&gt;</code></strong></p>
+        </div>
+        <br/><br/><br/><br/><br/><br/>
+
+        <!--<div class="carousel carousel-slider">
+<a class="carousel-item"><img src="https://github.com/inky2013/inky2013.github.io/blob/master/assets/cgutils1.png"></a>
+<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/2"></a>
+<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/3"></a>
+<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/4"></a>
+</div>-->
+
+
+
+        %analytics%
+        %material.end%
+        %material.js.nav%
+        %material.js.scrollspy%
+        %material.js.scrollto%
+        %cookies.base%
+
+
+    </body>
+</html>
