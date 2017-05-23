@@ -1,0 +1,32 @@
+<defaults>
+    <target>nav</target>
+    <nav>nav</nav>
+</defaults>
+<script>
+    function isScrolledIntoView(elem)
+    {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+        return ((elemBottom >= docViewTop) && (elemTop <= docViewBottom) && (elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+    }
+
+    $(window).scroll(function() {    
+        if(isScrolledIntoView($('%target%')))
+        {
+            $("%nav%").addClass("z-depth-0");
+        } else {
+            $("%nav%").removeClass("z-depth-0");
+        }   
+    });
+    
+    $(document).ready(function() {
+        if(isScrolledIntoView($('%target%')))
+        {
+            $("%nav%").addClass("z-depth-0");
+        } else {
+            $("%nav%").removeClass("z-depth-0");
+        } 
+    })
+</script>

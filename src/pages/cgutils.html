@@ -9,117 +9,241 @@
                 margin-bottom:5px;
                 font-weight: 400;
             }
+            ul {list-style-type: circle;}
+
         </style>
     </head>
     <body>
-        %loader%
+
         <section type="navbar" title="CGUtils" list="%_navlist%"> 
         </section>
+        <div id="top-bar" style="height:44vh;" class="cyan"></div>
 
-        <div class="container">
-            <h2>CGUtils <span class="grey-text" style="font-size: 16px;">Minecraft Mod for 1.10+</span></h2>
-            <p class="flow-text slab">CGUtils is a server-side admin mod which adds useful features for server admin and map makers. These are: </p>
-            <blockquote>
-                <p class="grey-text">Contents</p>
-                <div class="flow-text navigation_list_container">
-                    <p><a href="#sect_downloads">Download CGUtils</a></p>
-                    <p><a href="#sect_config">Config Files</a></p>
-                    <p><a href="#sect_files">File Downloads</a></p>
-                    <p><a href="#sect_stacks">Stacked Commands</a></p>
-                    <p><a href="#sect_sudo">Sudo Command</a></p>
-                </div>
-            </blockquote>
-            <br/><br/><br/>
-            <h4 class="slab" id="sect_downloads">Downloads</h4>
+        <div class="container" style="margin-top:-42vh;">
+
             <div class="row">
-                <div class="col s12 m6"><a target="_blank" href="https://minecraft.curseforge.com/projects/cg-utils" class="btn-large orange waves-effect waves-light" style="width:100%;margin-top:5px;margin-left:5px;margin-right:5px;">Curse</a></div>
-                <div class="col s12 m6"><a target="_blank" href="https://github.com/inky2013/cgutils" class="btn-large grey waves-effect waves-light" style="width:100%;margin-top:5px;margin-left:5px;margin-right:5px;">Source</a></div>
-            </div>
-            <br/><br/>
-            <h4 class="slab" id="sect_config">Config Files</h4>
-            <p>Config for file downloads and stacked commands are saved as json files. Stacked commands are saved at <code>./config/cgutils/stacks</code> and downloads are saved at <code>./config/cgutils/downloads</code></p>
-            <br/><br/>
-            <h4 class="slab" id="sect_files">File Downloads</h4>
-            <p>File downloads can only be initiated by a server admin. The URL can be specified in config or typed ingame. The JSON format is shown below.</p>
-            <pre><code>{
- <span class="purple-text">"name</span>":<span class="green-text">"unique_name_with_no_spaces</span>",
- <span class="purple-text">"saveLocation</span>":<span class="green-text">"save directory relative to server jar</span>",
- <span class="purple-text">"url</span>":<span class="green-text">"http://example.com/myfile.txt</span>",
- <span class="purple-text">"group</span>":<span class="green-text">"group_name</span>"
-}</code></pre>
-            <p>There are 3 commands that can be used to download files in CGUtils. These are:</p>
-            <ul>
-                <li>- <strong><code>/update get &lt;unique_name_with_no_spaces&gt;</code></strong>: This downloads the file with the unique name</li>
-                <li>- <strong><code>/update group &lt;group_name&gt;</code></strong>: This downloads all files in the specified group</li>
-                <li>- <strong><code>/update url &lt;url&gt; &lt;location&gt;</code></strong>: Downloads the file found at <strong>url</strong> to <strong>location</strong></li>
-            </ul>
-            <p>Example file download JSON file:</p>
-            <pre><code>{
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">About</span>
+                            <p>CGutils is a mod for minecraft 1.10.2+ which adds commands for server admin and map makers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Downloads</span>
+                            <p>The mod is hosted on curse and is available on the curseforge website as well as the twitch launcher. The latest JAR can also be downloaded using the link below.</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://minecraft.curseforge.com/projects/cg-utils">Curse</a>
+                            <a href="https://minecraft.curseforge.com/projects/cg-utils/files/2368152/download">Download</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div id="github_card_success" class="card-content">
+                            <span class="card-title">GitHub</span>
+                            <p>Latest Commit: <span id="github_last_commit"><span style="font-style: italic;" class="grey-text">Loading...</span></span></p><br/>
+                            <img src="https://api.travis-ci.org/inky2013/conclipsegames.svg?branch=master">
+                        </div>
+                        <div id="github_card_fail" class="card-content hide">
+                            <span class="card-title">Error Loading GitHub Statistics</span>
+                            <p></p><p></p>
+                        </div>
+                        <div class="card-action">
+                            <a href="https://github.com/inky2013/cgutils">View Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Commands Overview</span>
+                            <p><strong>/update</strong></p>
+                            <p>The update command is used to download files to the server using http. It can only be used by server admin.</p>
+                            <br />
+                            <p><strong>Stacked Commands</strong></p>
+                            <p>Stacked commands are commands that will run a set of commands in series. Stacked commands have individual permission settings and have support for arguments.</p>
+                            <br />
+                            <p><strong>/sudo</strong></p>
+                            <p>The sudo command is designed to be used inside stacked commands when a non op player needs to run an admin command or when a fake player (eg: open computers) needs to run an admin command. Permission for this command is specific to each individual player.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Update Command</span>
+                            <p>The update command fetches a file from a url and saves it to the server. An example use of this command is updating a minetweaker script while the server is running without needing to access the server.<br/>The config is saved in a JSON format and must contain the following fields:</p>
+                            <table class="bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>A unique name to reference the download in-game.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>saveLocation</td>
+                                        <td>The location the file should be saved at relative to the server.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>url</td>
+                                        <td>The URL of the file that should be downloaded</td>
+                                    </tr>
+                                    <tr>
+                                        <td>group</td>
+                                        <td>A group name which can be shared with different downloads.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p>Downloads can be in different groups. An entire group can be downloaded at once instead of running each command individually. (eg: all minetweaker scripts would share the same group).<br/></p>
+
+                            <blockquote><p>Example JSON file for a download:</p><pre><code>{
  <span class="purple-text">"name</span>":<span class="green-text">"tinkers</span>",
  <span class="purple-text">"saveLocation</span>":<span class="green-text">"scripts/</span>",
  <span class="purple-text">"url</span>":<span class="green-text">"http://inky2013.github.io/mt_scripts/tinkers.zs</span>",
  <span class="purple-text">"group</span>":<span class="green-text">"minetweaker</span>"
-}</code></pre>
-            <p>We could then download "tinkers.zs" using any one of the following commands:</p>
-            <ul>
-                <li>- <strong><code>/update get tinkers</code></strong></li>
-                <li>- <strong><code>/update group minetweaker</code></strong></li>
-                <li>- <strong><code>/update url http://inky2013.github.io/mt_scripts/tinkers.zs scripts/</code></strong></li>
-            </ul>
+}</code></pre></blockquote>
 
-            <br/><br/>
-            <h4 class="slab" id="sect_stacks">Stacked Commands</h4>
-            <p>Stacked commands are a list of commands that all run in sequence when the command is run. A simple example is shown below which will summon a cow, pig, sheep and chicken at the sender.</p>
-            <pre><code>{
-    <span class="purple-text">"name"</span>:<span class="green-text">"summonfood"</span>,
-    <span class="purple-text">"requiresop"</span>:<span class="orange-text">false</span>,
+                            <p>The above file could be downloaded using one of the following commands:</p>
+
+                            <ul>
+                                <li><code>/update get tinkers</code></li>
+                                <li><code>/update group minetweaker</code></li>
+                                <li><code>/update url http://inky2013.github.io/mt_scripts/tinkers.zs scripts/</code></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Stacked Commands</span>
+                            <p>Stacked commands are customisable commands that run a predefined set of other commands when executed. Thay can also be used to allow non-opped players to run a specific admin command with preset arguments. The command is set in config using a JSON format.</p>
+                            <table class="bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Field</th>
+                                        <th>Description</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td>name</td>
+                                        <td>A unique name to reference the stacked command in-game.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>requiresop</td>
+                                        <td>Boolean value which defines whether the player must be an op to run the command.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>commands</td>
+                                        <td>An array of commands which should be run when the stacked command is run.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br/>
+                            <p>Arguments can also be added to the stacked command by inseting <code>{{<span style="font-style: italic;" class="grey-text">index</span>}}</code> into the string. The sender's display name can also be used in the command by inserting <code>{{sender}}</code> into the string.</p>
+
+                            <blockquote><p>This example will take 3 arguments and print them back into the sender's console as a way of noting down co-oridnates</p>
+<pre><code>{
+    <span class="purple-text">"name"</span>:<span class="green-text">"notecoords"</span>,
+    <span class="purple-text">"requiresop"</span>:<span class="orange-text">false</span>, 
     <span class="purple-text">"commands"</span>: [
-        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Cow ~ ~ ~"</span>,
-        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Sheep ~ ~ ~"</span>,
-        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Pig ~ ~ ~"</span>,
-        <span class="green-text">"execute {{sender}} ~ ~ ~ summon Chicken ~ ~ ~"</span>
+        <span class="green-text">"tellraw {{sender}} {<span class="red-text">\"</span>text<span class="red-text">\"</span>:<span class="red-text">\"</span>Noted Co-Ordinates<span class="red-text">\"</span>}"</span>,
+        <span class="green-text">"tellraw {{sender}} {<span class="red-text">\"</span>text<span class="red-text">\"</span>:<span class="red-text">\"</span>{{0}}<span class="red-text">\"</span>}"</span>,
+        <span class="green-text">"tellraw {{sender}} {<span class="red-text">\"</span>text<span class="red-text">\"</span>:<span class="red-text">\"</span>{{1}}<span class="red-text">\"</span>}"</span>,
+        <span class="green-text">"tellraw {{sender}} {<span class="red-text">\"</span>text<span class="red-text">\"</span>:<span class="red-text">\"</span>{{2}}<span class="red-text">\"</span>}"</span>
     ]
-}</code></pre>
-            
-            <p>Arguments can also be added to the command.</p>
-            
-            <pre><code>{
-    <span class="purple-text">"name"</span>:<span class="green-text">"subtitle"</span>,
-    <span class="purple-text">"requiresop"</span>:<span class="orange-text">true</span>,
-    <span class="purple-text">"commands"</span>: [
-        <span class="green-text">"title {{0}} title {<span class="orange-text">\"</span>text<span class="orange-text">\"</span>:<span class="orange-text">\"</span><span class="orange-text">\"</span>}"</span>,
-        <span class="green-text">"title {{0}} subtitle {<span class="orange-text">\"</span>text<span class="orange-text">\"</span>:<span class="orange-text">\"</span>{{1}}}<span class="orange-text">\"</span>}"</span>
-    ]
-}</code></pre>
-            <p>The command will then be run with <strong><code>/subtitle &lt;player&gt; &lt;text&gt;</code></strong></p>
-            
-            <br/><br/>
-            <h4 class="slab" id="sect_sudo">Sudo Command</h4>
-            <p>The sudo command has 2 main uses:</p>
-            <ul>
-                <li>- To run an admin command from inside a stacked command</li>
-                <li>- To run an admin command from a fake player (eg: open computers)</li>
-            </ul>
-            <p>It has very simple usage: <strong><code>/sudo &lt;command with spaces&gt;</code></strong></p>
+}</code></pre></blockquote>
+                            <p>If the user typed "<code>/notecoords 143 67 762</code>" it would output the following to their chat:</p>
+                            <blockquote style="border-color:#F44336">
+                            
+<pre><code>Noted Co-Ordinates
+143
+67
+762</code></pre>
+                            </blockquote>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col s12 hide sect">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Sudo Command</span>
+                            <p>The sudo command allows any command to be run as if it had been typed into the server console. It has player specific permissions and is meant to be used where a player cannot be given permssion to run the command (eg: fake player).</p>
+                            <p>If a non-opped player was given permission to use the sudo command they could do something like the following:</p>
+                            
+                            <blockquote><code>/op logdotzip</code></blockquote>
+                            <blockquote style="border-color:#F44336"><code class="red-text">You do not have permission to use this command</code></blockquote>
+                            <blockquote>/sudo op logdotzip</blockquote>
+                            <blockquote style="border-color:#F44336"><code class="grey-text">opped logdotzip</code></blockquote>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
-        <br/><br/><br/><br/><br/><br/>
-
-        <!--<div class="carousel carousel-slider">
-<a class="carousel-item"><img src="https://github.com/inky2013/inky2013.github.io/blob/master/assets/cgutils1.png"></a>
-<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/2"></a>
-<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/3"></a>
-<a class="carousel-item"><img src="http://lorempixel.com/800/400/food/4"></a>
-</div>-->
-
-
 
         %analytics%
         %material.end%
         %material.js.nav%
         %material.js.scrollspy%
         %material.js.scrollto%
+        <!--<section type="material-nav-depth" target="#top-bar"></section>-->
         %cookies.base%
+        <script>
+            $(document).ready(function() {
+                $.ajax({url: "https://api.github.com/repos/inky2013/cgutils/commits", success: function(result){
+                    var last_commit;
+                    for (var i=0;i<result.length;i++) {
+                        if((last_commit === undefined) || (Date.parse(last_commit) < Date.parse(result[i].commit.author.date))){
+                            last_commit = result[i].commit.author.date;
+                        }
+                    }
+                    var date = new Date(last_commit);
+                    var monthNames = ["January", "February", "March", "April", "May", "June",
+                                      "July", "August", "September", "October", "November", "December"
+                                     ];
+                    var ext = ["th", "st", "nd" ,"rd", "th", "th", "th", "th", "th", "th"];
+                    console.log(last_commit);
+                    $("#github_last_commit").html((date.getDate()) + ext[date.getDate().toString().split('').pop()] + ' ' + (monthNames[date.getMonth()]) + ' ' +  date.getFullYear());
 
+                }, error: function(err) {
+                    $("#github_card_loading").hide();
+                    $("#github_card_fail").removeClass("hide");
+                }});
+            });
+
+            $(window).bind("load", function() {
+                $(".sect").each(function(index) {
+                    $(this).removeClass("hide").hide();
+                    $(this).delay(75*index).fadeIn(250);
+                });
+            });
+        </script>
 
     </body>
 </html>
