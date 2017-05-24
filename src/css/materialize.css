@@ -6,6 +6,9 @@
     -ms-user-select: none;
     user-select: none;
 }
+p {
+    word-wrap: break-word;
+}
 .image-fixed-200 {
     height:200px;
 }
